@@ -1,14 +1,25 @@
 # Query - Me sirve solo para hacer consultas
 type Query {
+    # Students
     findAllStudents: [Student],
     findStudentById(studentId: String): Student
+
+    # Courses
+    findAllCourses: [Course],
+    findCourseById(courseId: String): Course
 }
 
 type Mutation {
-    createStudent(inputStudent: InputStudent): Student,
+    # Students
+    createStudent(inputStudent: InputStudent!): Student,
     deleteStudentById(studentId: String): String
+
+    # Courses
+    createCourse(inputCourse: InputCourse!): Course,
+    deleteCourseById(courseId: String): String
 }
 
+# Student
 type Student {
     id: ID,
     name: String,
@@ -21,4 +32,18 @@ input InputStudent {
     lastName: String,
     age: Int,
     courseId: String!
+}
+
+# Course
+type Course {
+    id: ID,
+    name: String,
+    category: String,
+    teacher: String
+}
+
+input InputCourse {
+    name: String,
+    category: String,
+    teacher: String
 }
