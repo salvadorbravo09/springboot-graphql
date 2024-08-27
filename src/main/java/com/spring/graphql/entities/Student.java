@@ -20,4 +20,7 @@ public class Student {
     private String lastName;
 
     private Integer age;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Course.class)
+    private Course course;
 }
